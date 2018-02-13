@@ -65,20 +65,19 @@ function loginHandle(){
         "data": {
             "type": "MemberLogin",
             "attributes": {
-            "username": $("[name='usernameLogin']").val(),
-            "password": $("[name='passwordLogin']").val()
+                "username": $("[name='usernameLogin']").val(),
+                "password": $("[name='passwordLogin']").val()
             }
         }
         }
 
         $.ajax({
-            url: LOGIN_API,
+            url: LOGIN_API,     
             type: "POST",
             data: JSON.stringify(loginData),
             success : function(response){
             alert("Đăng nhập thành công");
             alert(response.data.attributes.secretToken);
-            //window.location.href = "my-index.html";
             window.reload();
             console.log('Login Successful');
             localStorage.setItem("secretToken", response.data.attributes.secretToken);
@@ -86,6 +85,7 @@ function loginHandle(){
             },
             error : function(response, message){
             console.log("Fail"); 
+            console.log(response.status);
             alert("Đăng nhập thất bại. Tên đăng nhập hoặc mật khẩu không đúng.");
             }
         });
