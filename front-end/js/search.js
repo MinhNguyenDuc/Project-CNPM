@@ -9,6 +9,7 @@ $(document).ready(function () {
         if (event.keyCode == 13) {
             loadvideo(inputSearch.value);
             document.getElementById("keyword-display").innerHTML = '"' + inputSearch.value + '"';
+            localStorage.setItem("Keyword", inputSearch.value);
         }
     }
 
@@ -39,7 +40,7 @@ function loadvideo(keyword) {
 
                 htmlContent += '       <div class="row">';
                 htmlContent += '            <div class="col-md-4">';
-                htmlContent += '                <a href="watch.html" onclick="videoNavigator(\''+videoId +'\')">';
+                htmlContent += '                <a href="watch.html" onclick="videoNavigator(\''+ videoId +'\')">';
                 htmlContent += '                    <img class="img-fluid rounded mb-3 mb-md-0" src="' + videoThumbnail + '" alt="">';
                 htmlContent += '                </a>';
                 htmlContent += '            </div>';
@@ -63,6 +64,4 @@ function loadvideo(keyword) {
 
 function videoNavigator(videoId){
     localStorage.setItem("VideoId", videoId);
-    // localStorage.setItem("Video Title", videoTitle);
-    // localStorage.setItem("Video Description", videoDescription);
 }
