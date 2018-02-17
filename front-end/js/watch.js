@@ -1,10 +1,12 @@
 var inputSearch = document.getElementById("keyword");
-var videoFrame = document.getElementById("video-frame")
+var videoFrame = document.getElementById("video-frame");
+var localStorageKeyword = localStorage.getItem("Keyword");
+var maxResults = 12;
 $(document).ready(function () {
   var videoId = localStorage.getItem("VideoId");
-  var localStorageKeyword = localStorage.getItem("Keyword");
+
   showVideo(videoId);
-  loadRelatedVideo(localStorageKeyword, videoId);
+  // loadRelatedVideo(localStorageKeyword, videoId);
   inputSearch.onkeydown = function (event) {
     if (event.keyCode == 13) {
       localStorage.setItem("Keyword", inputSearch.value);
@@ -30,11 +32,12 @@ function showVideo(videoId){
     }
   });
   videoFrame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+  loadRelatedVideo(localStorageKeyword, videoId);
 }
 
 function loadRelatedVideo(keyword, videoIdWatching){
   $.ajax({
-    url: "https://content.googleapis.com/youtube/v3/search?q=" + keyword + "&type=video&videoEmbeddable=true&videoSyndicated=true&maxResults=12&part=snippet&key=AIzaSyAwUjk3CwtXCiB_W6Xi0colfOKPgm90hHc",
+    url: "https://content.googleapis.com/youtube/v3/search?q=" + keyword + "&type=video&videoEmbeddable=true&videoSyndicated=true&maxResults="+maxResults+"&part=snippet&key=AIzaSyAwUjk3CwtXCiB_W6Xi0colfOKPgm90hHc",
     type:'GET',
     success : function(response){
       var videoRelatedHTMLContent = "";
@@ -48,7 +51,7 @@ function loadRelatedVideo(keyword, videoIdWatching){
           var videoDescription = response.items[i].snippet.description;
           var videoThumbnail = response.items[i].snippet.thumbnails.medium.url;
 
-          videoRelatedHTMLContent+=' <a href="#">';
+          videoRelatedHTMLContent+=' <a href="#" onclick = showVideo(\'' + videoId +'\')>';
           videoRelatedHTMLContent+='  <img class="img-fluid" src="'+ videoThumbnail +'" alt="">';
           videoRelatedHTMLContent+='  <h4 class="text-center">'+videoTitle+'</h4>';
           videoRelatedHTMLContent+=' </a>';
@@ -56,7 +59,6 @@ function loadRelatedVideo(keyword, videoIdWatching){
 
         }
       }
-
       document.getElementById("related-videos").innerHTML = videoRelatedHTMLContent;
     }
   })
