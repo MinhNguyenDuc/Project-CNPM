@@ -3,6 +3,7 @@ var videoFrame = document.getElementById("video-frame");
 var localStorageKeyword = localStorage.getItem("Keyword");
 var maxResults = 12;
 $(document).ready(function () {
+  inputSearch.setAttribute("value", localStorageKeyword);
   var videoId = localStorage.getItem("VideoId");
 
   showVideo(videoId);
@@ -27,8 +28,11 @@ function showVideo(videoId){
       console.log("Access Complete");
       var videoTitle = response.items[0].snippet.title;
       var videoDescription = response.items[0].snippet.description;
+      var channel = response.items[0].snippet.channelTitle;
+      var videoDescriptionEdited = videoDescription.replace(/\n/g,"<br>");
       $("#video-title").text(videoTitle);
-      $("#video-description").text(videoDescription);
+      $("#video-description").html(videoDescriptionEdited);
+      $("#channel-title").text(channel);
     }
   });
   videoFrame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
@@ -41,7 +45,7 @@ function loadRelatedVideo(keyword, videoIdWatching){
     type:'GET',
     success : function(response){
       var videoRelatedHTMLContent = "";
-      for(var i = 0 ; i < 4 ; i++) {
+      for(var i = 0 ; i < 10 ; i++) {
         if (response.items[i].id.kind == 'youtube#channel') {
             continue;
         }
@@ -53,7 +57,7 @@ function loadRelatedVideo(keyword, videoIdWatching){
 
           videoRelatedHTMLContent+=' <a href="#" onclick = showVideo(\'' + videoId +'\')>';
           videoRelatedHTMLContent+='  <img class="img-fluid" src="'+ videoThumbnail +'" alt="">';
-          videoRelatedHTMLContent+='  <h4 class="text-center">'+videoTitle+'</h4>';
+          videoRelatedHTMLContent+='  <h6 class="text-center">'+videoTitle+'</h6>';
           videoRelatedHTMLContent+=' </a>';
           videoRelatedHTMLContent+=' <hr>';
 

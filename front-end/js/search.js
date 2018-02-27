@@ -12,13 +12,9 @@ $(document).ready(function () {
             localStorage.setItem("Keyword", inputSearch.value);
         }
     }
-
     document.getElementById("search-button").onclick = function () {
         loadvideo(inputSearch.value);
     }
-
-
-
 });
 
 function loadvideo(keyword) {
@@ -36,6 +32,7 @@ function loadvideo(keyword) {
                 var videoTitle = response.items[i].snippet.title;
                 var videoDescription = response.items[i].snippet.description;
                 var videoThumbnail = response.items[i].snippet.thumbnails.medium.url;
+
 
 
                 htmlContent += '       <div class="row">';
