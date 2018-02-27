@@ -32,13 +32,19 @@ function loadvideo(keyword) {
                 var videoTitle = response.items[i].snippet.title;
                 var videoDescription = response.items[i].snippet.description;
                 var videoThumbnail = response.items[i].snippet.thumbnails.medium.url;
-
+                var thumbnailHeight = response.items[i].snippet.thumbnails.medium.height;
+                var thumbnailWidth = response.items[i].snippet.thumbnails.medium.width;
 
 
                 htmlContent += '       <div class="row">';
-                htmlContent += '            <div class="col-md-4">';
+                htmlContent += '            <div class="col-lg-4 ">';
                 htmlContent += '                <a href="watch.html" onclick="videoNavigator(\''+ videoId +'\')">';
-                htmlContent += '                    <img class="img-fluid rounded mb-3 mb-md-0" src="' + videoThumbnail + '" alt="">';
+                htmlContent += '                    <div class="sub-container">';
+                htmlContent += '                      <img class="img-fluid rounded mb-3 mb-md-0 image" src="' + videoThumbnail + '" alt="" width = "'+thumbnailWidth+'" height="'+thumbnailHeight+'">';
+                htmlContent += '                      <div class="middle">';
+                htmlContent += '                      <img src="../font/media-play.svg" width="50" height="50" alt="media-play">';
+                htmlContent += '                      </div>';
+                htmlContent += '                    </div>';
                 htmlContent += '                </a>';
                 htmlContent += '            </div>';
                 htmlContent += '            <div class="col-md-6">';
