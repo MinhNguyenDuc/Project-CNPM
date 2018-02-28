@@ -1,10 +1,10 @@
 var inputSearch = document.getElementById("keyword");
+loadvideo(localStorage.getItem("Keyword"));
+document.title = "Result for " + localStorage.getItem("Keyword");
+
 
 $(document).ready(function () {
-
-    loadvideo(localStorage.getItem("Keyword"));
     document.getElementById("keyword-display").innerHTML = '"' + localStorage.getItem("Keyword") + '"';
-
     inputSearch.onkeydown = function (event) {
         if (event.keyCode == 13) {
             loadvideo(inputSearch.value);
@@ -40,7 +40,7 @@ function loadvideo(keyword) {
                 htmlContent += '            <div class="col-lg-4 ">';
                 htmlContent += '                <a href="watch.html" onclick="videoNavigator(\''+ videoId +'\')">';
                 htmlContent += '                    <div class="sub-container">';
-                htmlContent += '                      <img class="img-fluid rounded mb-3 mb-md-0 image" src="' + videoThumbnail + '" alt="" width = "'+thumbnailWidth+'" height="'+thumbnailHeight+'">';
+                htmlContent += '                      <img class="img-fluid image" src="' + videoThumbnail + '" alt="" width = "'+thumbnailWidth+'" height="'+thumbnailHeight+'">';
                 htmlContent += '                      <div class="middle">';
                 htmlContent += '                      <img src="../font/media-play.svg" width="50" height="50" alt="media-play">';
                 htmlContent += '                      </div>';

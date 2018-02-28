@@ -3,6 +3,44 @@ a,u {
   color: black;
 }
 
+#logo {
+    margin-bottom: 0.2em;
+}
+
+#page-name {
+  font-family: Pacifico;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@keyframes page-name-hover {
+  0% {color: white;}
+  50% {color: #FF4040;}
+  100% {color: white;}
+}
+
+#logo {
+  animation:spin 1s;
+}
+
+#page-name {
+  animation-name: page-name-hover;
+  animation-duration: 2s;
+}
+
+#page-name:hover {
+  animation-name: page-name-hover;
+  animation-duration: 2s;
+}
+
+a:hover {
+  color: red;
+}
+
+.related-video-title {
+  margin-top: 0.5em;
+}
+
 #signInModal label {
   margin-top: 10px;
 }

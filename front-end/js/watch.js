@@ -57,7 +57,7 @@ function loadRelatedVideo(keyword, videoIdWatching){
 
           videoRelatedHTMLContent+=' <a href="#" onclick = showVideo(\'' + videoId +'\')>';
           videoRelatedHTMLContent+='  <img class="img-fluid" src="'+ videoThumbnail +'" alt="">';
-          videoRelatedHTMLContent+='  <h6 class="text-center">'+videoTitle+'</h6>';
+          videoRelatedHTMLContent+='  <h6 class="text-center related-video-title">'+videoTitle+'</h6>';
           videoRelatedHTMLContent+=' </a>';
           videoRelatedHTMLContent+=' <hr>';
 
