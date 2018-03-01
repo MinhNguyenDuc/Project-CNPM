@@ -42,7 +42,7 @@ function loadvideo(keyword) {
                 htmlContent += '                    <div class="sub-container">';
                 htmlContent += '                      <img class="img-fluid image" src="' + videoThumbnail + '" alt="" width = "'+thumbnailWidth+'" height="'+thumbnailHeight+'">';
                 htmlContent += '                      <div class="middle">';
-                htmlContent += '                      <img src="../font/media-play.svg" width="50" height="50" alt="media-play">';
+                htmlContent += '                      <img src="../img/white-play.png" width="40" height="40" alt="media-play">';
                 htmlContent += '                      </div>';
                 htmlContent += '                    </div>';
                 htmlContent += '                </a>';
