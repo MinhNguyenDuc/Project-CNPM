@@ -48,7 +48,7 @@ function loadvideo(keyword) {
                 htmlContent += '                </a>';
                 htmlContent += '            </div>';
                 htmlContent += '            <div class="col-md-6">';
-                htmlContent += '           <a href="watch.html" class="video-title-navigator" onclick="videoNavigator(\''+videoId+'\')"><h3>' + videoTitle + '</h3></a>';
+                htmlContent += '           <a href="watch.html" id="video-title-navigator" onclick="videoNavigator(\''+videoId+'\')"><h3>' + videoTitle + '</h3></a>';
                 htmlContent += '           <p>' + videoDescription + '</p>';
                 htmlContent += '           </div>';
                 htmlContent += '       </div>';

@@ -2,26 +2,58 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title></title>
-  <link rel="icon" type="image/png" href="../img/icon.png" width="35" height="35">
-  <link rel="stylesheet" href="../css/hovereffect.css">
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../css/portfolio-item.css" rel="stylesheet">
+
+  <title>iTube</title>
+  
+  <link rel="icon" type="image/png" href="img/icon.png" width="35" height="35">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/portfolio-item.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
 </head>
 
-<body>
+<body> 
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '156871905025296',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.12'
+      });
+        
+      FB.AppEvents.logPageView();   
+        
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
 
+  </script>
+  <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
+    </script>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="../index.html" id="page-name"><img id="logo" src="../img/logo.png" widht="40" height="24"> iTube</a>
+      <a class="navbar-brand" href="#" id="page-name"><img id="logo" src="img/logo.png" id="logo" widht="40" height="24"> iTube</a>
       <div class="input-group input-group-sm sm-3 col-6" id="search-box">
         <input type="text" class="form-control" placeholder="Search" id="keyword">
         <div class="input-group-append">
@@ -45,11 +77,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal">Sign up</a>
           </li>
+          <li class="nav-item"><div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div></li>
         </ul>
       </div>
     </div>
   </nav>
-
 
 
   <!-- Modal Sign In -->
@@ -72,14 +104,14 @@
             </label>
             <input type="password" class="form-control" placeholder="Enter Password" name="passwordLogin" required>
 
-            <button class="btn btn-success" id="btnSignIn">Sign In</button>
+            <button class="btn btn-success btn-fix" id="btnSignIn">Sign In</button>
             <label>
               <input type="checkbox" checked="checked" id="remeberMeCheckBox"> Remember me
             </label>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <div class="fb-login-button btn-fix" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onclick="reload()"></div>
         </div>
       </div>
 
@@ -166,23 +198,75 @@
     </div>
   </div>
 
+
+  <!-- Page Content -->
   <div class="container">
-    <!-- Page Heading -->
-    <h6 class="my-4">Search Results for
-      <span id="keyword-display"></span>
-    </h6>
 
-    <hr>
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">Welcome</h1>
 
-    <div id="list-video">
-          
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+      <div class="col-md-8">
+        <img class="img-fluid" src="http://placehold.it/750x450" alt="">
+      </div>
+
+      <div class="col-md-4">
+        <h3 class="my-3">Video Title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius
+          vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat,
+          felis enim.</p>
+        <h3 class="my-3">Video Details</h3>
+        <ul>
+          <li>Lorem Ipsum</li>
+          <li>Dolor Sit Amet</li>
+          <li>Consectetur</li>
+          <li>Adipiscing Elit</li>
+        </ul>
+      </div>
+
     </div>
+    <!-- /.row -->
 
-    <button class="btn btn-primary" hidden>Load More</button>
+    <!-- Related Projects Row -->
+    <h3 class="my-4">Related Videos</h3>
 
+    <div class="row">
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <a href="#">
+          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <h4 class="text-center">Video Title</h4>
+        </a>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <a href="#">
+          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <h4 class="text-center">Video Title</h4>
+        </a>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <a href="#">
+          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <h4 class="text-center">Video Title</h4>
+        </a>
+      </div>
+
+      <div class="col-md-3 col-sm-6 mb-4">
+        <a href="#">
+          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+          <h4 class="text-center">Video Title</h4>
+        </a>
+      </div>
+
+    </div>
+    <!-- /.row -->
 
   </div>
-
+  <!-- /.container -->
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
@@ -194,12 +278,9 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <!-- <script src="js/login.js"></script> -->
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/register.js"></script>
-  <script src="../js/search.js"></script>
-
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
