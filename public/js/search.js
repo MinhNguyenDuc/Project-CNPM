@@ -15,12 +15,10 @@ $(document).ready(function () {
     document.getElementById("search-button").onclick = function () {
         loadvideo(inputSearch.value);
     }
-    $(window).scroll(function () {
-        if($(window).scrollTop() + $(window).height() > 
-        $(document).height() - 100){
-            loadMoreVideo(sessionStorage.getItem("Keyword"), sessionStorage.getItem("nextPageToken"));
-        }
-    });
+    document.getElementById("load-more-button").onclick = function(){
+        loadMoreVideo(sessionStorage.getItem("Keyword"), sessionStorage.getItem("nextPageToken"));
+    }
+   
     
 });
 
@@ -115,7 +113,6 @@ function loadMoreVideo(keyword, nextPageToken) {
     
     
                 }
-                //document.getElementById("loadmore").innerHTML = htmlContent;
                 $("#loadmore").append(htmlContent);
                 sessionStorage.setItem("nextPageToken", response.nextPageToken);
             },
