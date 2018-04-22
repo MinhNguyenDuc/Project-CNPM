@@ -1,20 +1,19 @@
 var inputSearch = document.getElementById("keyword");
 var videoFrame = document.getElementById("video-frame");
-var localStorageKeyword = localStorage.getItem("Keyword");
+var sessionStorageKeyword = sessionStorage.getItem("Keyword");
 var maxResults = 12;
 $(document).ready(function () {
-  inputSearch.setAttribute("value", localStorageKeyword);
-  var videoId = localStorage.getItem("VideoId");
-
+  inputSearch.setAttribute("value", sessionStorageKeyword);
+  var videoId = sessionStorage.getItem("VideoId");
   showVideo(videoId);
   inputSearch.onkeydown = function (event) {
     if (event.keyCode == 13) {
-      localStorage.setItem("Keyword", inputSearch.value);
+      sessionStorage.setItem("Keyword", inputSearch.value);
       window.location.href = "searchresult.html";
     }
   }
   document.getElementById("search-button").onclick = function () {
-    localStorage.setItem("Keyword", inputSearch.value);
+    sessionStorage.setItem("Keyword", inputSearch.value);
     window.location.href = "searchresult.html";
   }
 });
@@ -36,7 +35,7 @@ function showVideo(videoId){
     }
   });
   videoFrame.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-  loadRelatedVideo(localStorageKeyword, videoId);
+  loadRelatedVideo(sessionStorageKeyword, videoId);
 }
 
 

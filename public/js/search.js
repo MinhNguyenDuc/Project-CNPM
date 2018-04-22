@@ -1,15 +1,15 @@
 var inputSearch = document.getElementById("keyword");
-loadvideo(localStorage.getItem("Keyword"));
-document.title = "Result for " + localStorage.getItem("Keyword");
+loadvideo(sessionStorage.getItem("Keyword"));
+document.title = "Result for " + sessionStorage.getItem("Keyword");
 
 
 $(document).ready(function () {
-    document.getElementById("keyword-display").innerHTML = '"' + localStorage.getItem("Keyword") + '"';
+    document.getElementById("keyword-display").innerHTML = '"' + sessionStorage.getItem("Keyword") + '"';
     inputSearch.onkeydown = function (event) {
         if (event.keyCode == 13) {
             loadvideo(inputSearch.value);
             document.getElementById("keyword-display").innerHTML = '"' + inputSearch.value + '"';
-            localStorage.setItem("Keyword", inputSearch.value);
+            sessionStorage.setItem("Keyword", inputSearch.value);
         }
     }
     document.getElementById("search-button").onclick = function () {
@@ -18,7 +18,7 @@ $(document).ready(function () {
     $(window).scroll(function () {
         if($(window).scrollTop() + $(window).height() > 
         $(document).height() - 100){
-            loadMoreVideo(localStorage.getItem("Keyword"), sessionStorage.getItem("nextPageToken"));
+            loadMoreVideo(sessionStorage.getItem("Keyword"), sessionStorage.getItem("nextPageToken"));
         }
     });
     
@@ -126,5 +126,5 @@ function loadMoreVideo(keyword, nextPageToken) {
     } 
 
 function videoNavigator(videoId) {
-    localStorage.setItem("VideoId", videoId);
+    sessionStorage.setItem("VideoId", videoId);
 }
